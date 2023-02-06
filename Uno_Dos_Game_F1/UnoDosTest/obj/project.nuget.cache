@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "tcGs9+KASvEacfJont8Jp1qQycq9mbealJmcWhpflJBoRJvO88//9ZUQMxRlIetNGOajigO0RmK8y2GzZNYDoQ==",
+  "dgSpecHash": "Z+gWpKCLIt8yk4z0V6EFn+1Fauxc6L5qgY7XaawKeOMxv2ogMfmk43Req4ka1XHsmxD4B7xSux2Lb/HqJGIYvA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\UnoDosTest\\UnoDosTest.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Josh\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
@@ -13,6 +14,7 @@
     "C:\\Users\\Josh\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.1.0\\microsoft.testplatform.objectmodel.17.1.0.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\microsoft.testplatform.testhost\\17.1.0\\microsoft.testplatform.testhost.17.1.0.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\Josh\\.nuget\\packages\\moq\\4.18.4\\moq.4.18.4.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\mstest.testadapter\\2.2.8\\mstest.testadapter.2.2.8.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\mstest.testframework\\2.2.8\\mstest.testframework.2.2.8.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
@@ -41,6 +43,7 @@
     "C:\\Users\\Josh\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.3.0\\system.diagnostics.diagnosticsource.4.3.0.nupkg.sha512",
+    "C:\\Users\\Josh\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\system.diagnostics.textwritertracelistener\\4.3.0\\system.diagnostics.textwritertracelistener.4.3.0.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\system.diagnostics.tracesource\\4.3.0\\system.diagnostics.tracesource.4.3.0.nupkg.sha512",
