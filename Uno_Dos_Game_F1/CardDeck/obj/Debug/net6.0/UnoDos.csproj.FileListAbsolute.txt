@@ -1,0 +1,12 @@
+B:\Team Project 2\TeamProject\CardDeck\bin\Debug\net6.0\UnoDos.deps.json
+B:\Team Project 2\TeamProject\CardDeck\bin\Debug\net6.0\UnoDos.dll
+B:\Team Project 2\TeamProject\CardDeck\bin\Debug\net6.0\UnoDos.pdb
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\UnoDos.csproj.AssemblyReference.cache
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\UnoDos.GeneratedMSBuildEditorConfig.editorconfig
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\UnoDos.AssemblyInfoInputs.cache
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\UnoDos.AssemblyInfo.cs
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\UnoDos.csproj.CoreCompileInputs.cache
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\UnoDos.dll
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\refint\UnoDos.dll
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\UnoDos.pdb
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\ref\UnoDos.dll

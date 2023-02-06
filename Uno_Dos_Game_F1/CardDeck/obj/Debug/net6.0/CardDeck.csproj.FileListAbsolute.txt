@@ -1,0 +1,12 @@
+B:\Team Project 2\TeamProject\CardDeck\bin\Debug\net6.0\CardDeck.deps.json
+B:\Team Project 2\TeamProject\CardDeck\bin\Debug\net6.0\CardDeck.dll
+B:\Team Project 2\TeamProject\CardDeck\bin\Debug\net6.0\CardDeck.pdb
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\CardDeck.csproj.AssemblyReference.cache
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\CardDeck.GeneratedMSBuildEditorConfig.editorconfig
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\CardDeck.AssemblyInfoInputs.cache
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\CardDeck.AssemblyInfo.cs
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\CardDeck.csproj.CoreCompileInputs.cache
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\CardDeck.dll
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\refint\CardDeck.dll
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\CardDeck.pdb
+B:\Team Project 2\TeamProject\CardDeck\obj\Debug\net6.0\ref\CardDeck.dll
