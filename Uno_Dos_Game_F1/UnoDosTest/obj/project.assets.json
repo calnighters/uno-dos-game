@@ -6471,8 +6471,8 @@
     },
     "UnoDos/1.0.0": {
       "type": "project",
-      "path": "../CardDeck/UnoDos.csproj",
-      "msbuildProject": "../CardDeck/UnoDos.csproj"
+      "path": "../UnoDosGame/UnoDos.csproj",
+      "msbuildProject": "../UnoDosGame/UnoDos.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6518,8 +6518,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\CardDeck\\UnoDos.csproj": {
-              "projectPath": "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\CardDeck\\UnoDos.csproj"
+            "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\UnoDosGame\\UnoDos.csproj": {
+              "projectPath": "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\UnoDosGame\\UnoDos.csproj"
             }
           }
         }

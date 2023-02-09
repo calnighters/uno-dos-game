@@ -205,3 +205,6 @@ C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\b
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.csproj.CopyComplete
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.genruntimeconfig.cache
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\ref\UnoDosTest.dll
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.deps.json
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.runtimeconfig.json
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.exe

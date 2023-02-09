@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CardDeck\UnoDos.csproj" />
+    <ProjectReference Include="..\UnoDosGame\UnoDos.csproj" />
   </ItemGroup>
 
 </Project>

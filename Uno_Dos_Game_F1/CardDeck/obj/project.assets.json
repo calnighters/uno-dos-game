@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\CardDeck\\UnoDos.csproj",
-      "projectName": "UnoDos",
-      "projectPath": "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\CardDeck\\UnoDos.csproj",
+      "projectUniqueName": "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\CardDeck\\UnoDos1.csproj",
+      "projectName": "UnoDos1",
+      "projectPath": "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\CardDeck\\UnoDos1.csproj",
       "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\CardDeck\\obj\\",
       "projectStyle": "PackageReference",

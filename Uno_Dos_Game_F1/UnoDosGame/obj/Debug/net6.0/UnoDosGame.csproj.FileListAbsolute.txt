@@ -1,0 +1,15 @@
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\bin\Debug\net6.0\UnoDosGame.exe
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\bin\Debug\net6.0\UnoDosGame.deps.json
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\bin\Debug\net6.0\UnoDosGame.runtimeconfig.json
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\bin\Debug\net6.0\UnoDosGame.dll
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\bin\Debug\net6.0\UnoDosGame.pdb
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\obj\Debug\net6.0\UnoDosGame.csproj.AssemblyReference.cache
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\obj\Debug\net6.0\UnoDosGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\obj\Debug\net6.0\UnoDosGame.AssemblyInfoInputs.cache
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\obj\Debug\net6.0\UnoDosGame.AssemblyInfo.cs
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\obj\Debug\net6.0\UnoDosGame.csproj.CoreCompileInputs.cache
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\obj\Debug\net6.0\UnoDosGame.dll
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\obj\Debug\net6.0\refint\UnoDosGame.dll
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\obj\Debug\net6.0\UnoDosGame.pdb
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\obj\Debug\net6.0\UnoDosGame.genruntimeconfig.cache
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosGame\obj\Debug\net6.0\ref\UnoDosGame.dll
