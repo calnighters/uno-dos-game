@@ -2,7 +2,7 @@ using UnoDos.Cards.Entities;
 using UnoDos.Cards.Enums;
 using UnoDos.Decks.Entities;
 using UnoDos.Players.Entities;
-using UnoDos.CPU
+
 
 namespace UnoDosTest.CPUTests
 {

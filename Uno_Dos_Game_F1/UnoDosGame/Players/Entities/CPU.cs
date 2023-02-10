@@ -2,7 +2,7 @@ using UnoDos.Cards.Entities;
 using UnoDos.Cards.Enums;
 using UnoDos.Decks.Entities;
  
-namespace UnoDos.CPU
+namespace UnoDos.Players.Entities
 {
     public class CPU : Player
     {
