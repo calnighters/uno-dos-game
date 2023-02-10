@@ -38,6 +38,5 @@ namespace UnoDos.Players.Entities
             return currentDeck;
         }
 
-        public List<Card> Cards { get; set; }
     }
 }
