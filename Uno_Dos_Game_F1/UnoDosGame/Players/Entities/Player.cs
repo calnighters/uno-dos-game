@@ -12,7 +12,7 @@ namespace UnoDos.Players.Entities
 
         private List<string> __Errors;
 
-        private bool CanPlayCard(Card playedCard, Card shownCard)
+        protected bool CanPlayCard(Card playedCard, Card shownCard)
         {
             if (playedCard.Colour == CardColour.Wild)
             {
