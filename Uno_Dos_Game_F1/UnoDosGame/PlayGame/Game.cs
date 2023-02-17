@@ -8,6 +8,7 @@ namespace UnoDos.PlayGame
     public class Game
     {
         private const int DRAW_CARD_OPTION = 3;
+        private const int END_GAME_OPTION = 3;
         private const int INITIAL_DRAW_COUNT = 10;
         private const int PLAY_CARD_OPTION = 2;
 
@@ -25,7 +26,6 @@ namespace UnoDos.PlayGame
                 {
                     CPU.IsResetCardPlayed = false;
                     DisplayHasCPUPlayedCardMessage();
-                    Console.WriteLine(string.Format("\nCPU Plays {0}", Deck.PlayedCards.Last().ToString()));
                 }
                 if (CPU.IsLoseTwoCardPlayed)
                 {
@@ -98,13 +98,11 @@ namespace UnoDos.PlayGame
         private void PlayerTurn()
         {
             PlayerOptions();
-            Console.Clear();
             while (Player.IsResetCardPlayed)
             {
                 Player.IsResetCardPlayed = false;
                 Console.WriteLine("\nYou played a reset card! Take another turn!");
                 PlayerOptions();
-                Console.Clear();
             }
             if (Player.IsLoseTwoCardPlayed)
             {
@@ -121,28 +119,66 @@ namespace UnoDos.PlayGame
 
         public void PlayGame()
         {
+            int _GameOption = 0;
+
             Console.WriteLine("Welcome to Uno Dos!");
             Console.WriteLine("\nPlease enter your desired username to continue...");
             Player.PlayerName = Console.ReadLine();
-
-            InitialiseGame();
             Console.Clear();
-            while (Player.Cards.Count > 0 && CPU.Cards.Count > 0)
-            {
-                PlayerTurn();
-                Console.Clear();
 
-                CPUTurn();
-            }
+            while (_GameOption != END_GAME_OPTION)
+            {
+                Console.WriteLine("Please Select an option below: \n\n1)Play Game \n2)View Rules \n3)Exit Game ");
+                int.TryParse(Console.ReadLine(), out _GameOption);
+                switch (_GameOption)
+                {
+                    case 1:
+                        Console.Clear();
+                        InitialiseGame();
+                        while (Player.Cards.Count > 0 && CPU.Cards.Count > 0)
+                        {
+                            PlayerTurn();
 
-            if (Player.Cards.Count == 0)
-            {
-                Console.WriteLine("Congratulations! You won!");
+                            CPUTurn();
+                        }
+
+                        if (Player.Cards.Count == 0)
+                        {
+                            Console.WriteLine("Congratulations! You won!");
+                        }
+                        if (CPU.Cards.Count == 0)
+                        {
+                            Console.WriteLine("Unlucky! CPU Won!");
+                        }
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Console.WriteLine("Here are the rules for the game!");
+                        Console.WriteLine("\nThis game is called Uno Dos, it is very similar to Uno but with a few caveats.");
+                        Console.WriteLine("\n1) Players will receive a set of 10 cards at the start of the game and so will the CPU");
+                        Console.WriteLine("\n2) If the current showing card on the table is numbered, players can only play their numbered cards if it is +1 or -1 of the current number shown, regardless of colour");
+                        Console.WriteLine("\n3) Special cards can only be played if they are the same colour as the card shown on the table. You can only use a different colour if the special card is the same as what has just been played");
+                        Console.WriteLine("\n4) The See Through card is an exception to this, it can be played at anytime. Once played, it'll take the colour of the card on the table");
+                        Console.WriteLine("\n5) If a special card is the current card showing on the table then you can play any numbered card as long as it is the same colour of the special card");
+                        Console.WriteLine("\n6) The Reset card allows the player to take another turn");
+                        Console.WriteLine("\n7) The Lose Two card allows the player to select any two cards they would like to get rid of and then places them two cards to the bottom of the card deck");
+                        Console.WriteLine("\n8) The Swap Deck card swaps the player's cards with the CPU's cards");
+                        Console.WriteLine("\n9) Compete to get rid of all your cards before the CPU does to win!");
+                        Console.WriteLine("\n\nPress any key to return to the main menu...");
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
+                    case 3:
+                        Console.Clear();
+                        Console.WriteLine("Thanks for playing! Press any key to close the window...");
+                        Console.ReadLine();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Option, Please Select again!");
+                        break;
+                }
             }
-            if(CPU.Cards.Count == 0)
-            {
-                Console.WriteLine("Unlucky! CPU Won!");
-            }
+            Environment.Exit(0);
         }
 
         private void PlayerOptions()
@@ -158,9 +194,11 @@ namespace UnoDos.PlayGame
                 switch (_SelectedOption)
                 {
                     case 1:
+                        Console.Clear();
                         DisplayPlayerHand();
                         break;
                     case 2:
+                        Console.Clear();
                         List<bool> _PlayableCards = new();
                         Player.Cards.ForEach(card =>
                         {
@@ -176,7 +214,7 @@ namespace UnoDos.PlayGame
                         {
                             DisplayPlayerHand();
                             ShowLastCardPlayedToString();
-                            Console.WriteLine("\n\nPlease Select a card from your hand. You can do this by typing in the index of the card you want to play. eg: To play the first card in your hand, you type 1 :");
+                            Console.WriteLine("\nPlease Select a card from your hand. You can do this by typing in the index of the card you want to play. eg: To play the first card in your hand, you type 1 :");
                             bool _CardPlayed = false;
                             while (!_CardPlayed)
                             {
@@ -196,19 +234,28 @@ namespace UnoDos.PlayGame
 
         private void PlayerSelectTwoCardsToLose()
         {
-            int _CardsSelected = 0;
             List<ICard> _CardsToRemove = new List<ICard>();
-            Console.Clear();
-            Console.WriteLine("\nYou played a Lose Two card! Please select two cards to lose");
-            DisplayPlayerHand();
-            while (_CardsSelected < 2)
+
+            if(Player.Cards.Count < 2)
             {
-                Console.WriteLine(string.Format("\nCard {0}:", _CardsSelected + 1));
-                int _SelectedCardPosition = CheckCardSelectedIsValid(Console.ReadLine());
-                if (_SelectedCardPosition > 0)
+                Console.WriteLine("\nYou have less than two cards in your hand! This will now clear your hand!");
+                _CardsToRemove = Player.Cards;
+            }
+            else
+            {
+                int _CardsSelected = 0;
+                Console.Clear();
+                Console.WriteLine("\nYou played a Lose Two card! Please select two cards to lose");
+                DisplayPlayerHand();
+                while (_CardsSelected < 2)
                 {
-                    _CardsToRemove.Add(Player.Cards[_SelectedCardPosition - 1]);
-                    _CardsSelected++;
+                    Console.WriteLine(string.Format("\nCard {0}:", _CardsSelected + 1));
+                    int _SelectedCardPosition = CheckCardSelectedIsValid(Console.ReadLine());
+                    if (_SelectedCardPosition > 0)
+                    {
+                        _CardsToRemove.Add(Player.Cards[_SelectedCardPosition - 1]);
+                        _CardsSelected++;
+                    }
                 }
             }
 

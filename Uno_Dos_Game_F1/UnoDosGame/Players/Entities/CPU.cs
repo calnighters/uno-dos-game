@@ -9,14 +9,22 @@ namespace UnoDos.Players.Entities
     {
         public Deck LoseTwoCards(Deck currentDeck)
         {
-            for (int i = 0; i < 2; i++)
+            if(Cards.Count < 2)
             {
-                Random _Random = new Random();
-                int _Index = _Random.Next(Cards.Count());
-                ICard _CardToLose = Cards[_Index];
-                Cards.Remove(_CardToLose);
-                currentDeck.DeckOfCards.Add(_CardToLose);
+                Cards = new List<ICard>();
             }
+            else
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    Random _Random = new Random();
+                    int _Index = _Random.Next(Cards.Count());
+                    ICard _CardToLose = Cards[_Index];
+                    Cards.Remove(_CardToLose);
+                    currentDeck.DeckOfCards.Add(_CardToLose);
+                }
+            }
+            IsLoseTwoCardPlayed = false;
             return currentDeck;
         }
 

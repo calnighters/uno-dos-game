@@ -113,6 +113,7 @@ namespace UnoDos.Players.Entities
         {
             Dictionary<List<ICard>, List<ICard>> _SwappedCards = new Dictionary<List<ICard>, List<ICard>>();
             _SwappedCards.Add(cardsToReceive, cardsToGive);
+            IsSwapDeckPlayed = false;
             return _SwappedCards.First();
         }
 
@@ -125,9 +126,9 @@ namespace UnoDos.Players.Entities
 
         public List<ICard> Cards { get; set; }
         public List<string> Errors => __Errors = __Errors ?? new List<string>();
-        public bool IsLoseTwoCardPlayed { get; private set; }
+        public bool IsLoseTwoCardPlayed { get; protected set; }
         public bool IsResetCardPlayed { get; set; }
-        public bool IsSwapDeckPlayed { get; private set; }
+        public bool IsSwapDeckPlayed { get; set; }
         public string PlayerName { get; set; }
     }
 }
