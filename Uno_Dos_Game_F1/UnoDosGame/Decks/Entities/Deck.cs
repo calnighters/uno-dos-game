@@ -1,16 +1,15 @@
 ﻿using UnoDos.Cards.Entities;
 using UnoDos.Cards.Enums;
 using UnoDos.Cards.Interfaces;
+using UnoDos.Decks.Interfaces;
 
 namespace UnoDos.Decks.Entities
 {
-    public class Deck
+    public class Deck : IDeck
     {
         private const int DRAW_FACE_CARD_AMOUNT = 1;
         private const int SPECIAL_CARD_VALUE = 20;
         private const int WILDCARD_VALUE = 50;
-
-        public Deck() { }
 
         private ICard __CardCreator;
         private List<ICard> __DeckOfCards;
@@ -72,6 +71,12 @@ namespace UnoDos.Decks.Entities
                 throw new ArgumentOutOfRangeException("count", "count must be greater than 0");
             }
 
+            if ((DeckOfCards.Count > 1 && DeckOfCards.Count < count) 
+                || DeckOfCards.Count < 1 && PlayedCards.Count < 1)
+            {
+                throw new InvalidOperationException("Not enough cards in deck");
+            }
+
             Reshuffle();
 
             List<ICard> drawnCards = DeckOfCards.Take(count).ToList();
@@ -102,7 +107,7 @@ namespace UnoDos.Decks.Entities
 
         public void Reshuffle()
         {
-            if(DeckOfCards.Count < 1)
+            if (DeckOfCards.Count < 1)
             {
                 __DeckOfCards = PlayedCards;
                 Shuffle();

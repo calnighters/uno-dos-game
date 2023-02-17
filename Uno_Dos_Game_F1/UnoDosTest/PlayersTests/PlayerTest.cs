@@ -1,19 +1,22 @@
 ﻿using UnoDos.Cards.Entities;
 using UnoDos.Cards.Enums;
+using UnoDos.Cards.Interfaces;
 using UnoDos.Decks.Entities;
+using UnoDos.Decks.Interfaces;
 using UnoDos.Players.Entities;
+using UnoDos.Players.Interfaces;
 
 namespace UnoDosTest.PlayersTests
 {
     [TestClass]
     public class PlayerTest
     {
-        private const string EXPECTED_COLOUR_ERROR = "Card colour Purple is an invalid card! Please play a card with this colour: Orange";
+        private const string EXPECTED_COLOUR_ERROR = "Card colour {0} is an invalid card! Please play a card with this colour: Orange";
         private const string EXPECTED_VALUE_ERROR = "Card number {0} is an invalid card! Please play a card with a value of +1 or -1 of the last card value, which is 5!";
         private const int INITIAL_DRAW_COUNT = 10;
 
-        Player __Player;
-        Deck __Deck;
+        IPlayer __Player;
+        IDeck __Deck;
 
         [TestInitialize]
         public void Initialise()
@@ -22,7 +25,7 @@ namespace UnoDosTest.PlayersTests
             __Deck = new Deck();
             __Deck.CreateDeck();
             __Player.Cards = __Deck.DrawCards(INITIAL_DRAW_COUNT);
-            __Deck.PlayedCards.Add(new()
+            __Deck.PlayedCards.Add(new Card()
             {
                 CardID = 5,
                 CardScore = 5,
@@ -30,15 +33,15 @@ namespace UnoDosTest.PlayersTests
                 TypeOfCard = CardType.Five
             });
         }
-        private void AssertCardIsNotPlayed(int errorCount, string lastErrorMessage, int expectedPlayerCardCount)
+        private void AssertCardIsNotPlayed(int errorCount, string lastErrorMessage, int expectedPlayerCardCount, int cardsPlayed)
         {
-            Assert.AreEqual(1, __Deck.PlayedCards.Count);
+            Assert.AreEqual(cardsPlayed, __Deck.PlayedCards.Count);
             Assert.AreEqual(errorCount, __Player.Errors.Count);
             Assert.AreEqual(lastErrorMessage, __Player.Errors[errorCount - 1]);
             Assert.AreEqual(expectedPlayerCardCount, __Player.Cards.Count);
         }
 
-        private void AssertCardIsPlayed(Card expectedPlayedCard, Card actualPlayedCard, int cardsPlayed)
+        private void AssertCardIsPlayed(ICard expectedPlayedCard, ICard actualPlayedCard, int cardsPlayed)
         {
             Assert.AreEqual(cardsPlayed, __Deck.PlayedCards.Count);
             Assert.AreEqual(expectedPlayedCard.CardID, actualPlayedCard.CardID);
@@ -67,9 +70,9 @@ namespace UnoDosTest.PlayersTests
         }
 
         [TestMethod]
-        public void Player_PlayCard_ShouldReturnErrorWhenInvalidColour()
+        public void Player_PlayCard_ShouldReturnNoErrorWhenDifferentColour()
         {
-            Card _PurpleFour = new Card()
+            ICard _PurpleFour = new Card()
             {
                 CardID = 1000,
                 CardScore = 4,
@@ -77,7 +80,7 @@ namespace UnoDosTest.PlayersTests
                 TypeOfCard = CardType.Four
             };
 
-            Card _PurpleSwitch = new Card()
+            ICard _PurpleSwitch = new Card()
             {
                 CardID = 1001,
                 CardScore = 20,
@@ -88,19 +91,19 @@ namespace UnoDosTest.PlayersTests
             __Player.Cards.Add(_PurpleFour);
             __Player.Cards.Add(_PurpleSwitch);
 
-            __Deck = __Player.PlayCard(_PurpleFour, __Deck.PlayedCards.Last(), __Deck);
+            __Deck = __Player.PlayCard(_PurpleFour, __Deck);
 
-            AssertCardIsNotPlayed(1, EXPECTED_COLOUR_ERROR, 12);
+            AssertCardIsPlayed(_PurpleFour, __Deck.PlayedCards.Last(), 2);
 
-            __Deck = __Player.PlayCard(_PurpleSwitch, __Deck.PlayedCards.Last(), __Deck);
+            __Deck = __Player.PlayCard(_PurpleSwitch, __Deck);
 
-            AssertCardIsNotPlayed(2, EXPECTED_COLOUR_ERROR, 12);
+            AssertCardIsPlayed(_PurpleSwitch, __Deck.PlayedCards.Last(), 3);
         }
 
         [TestMethod]
         public void Player_PlayCard_ShouldReturnErrorWhenInvalidValue()
         {
-            Card _OrangeThree = new Card()
+            ICard _OrangeThree = new Card()
             {
                 CardID = 1000,
                 CardScore = 3,
@@ -108,7 +111,7 @@ namespace UnoDosTest.PlayersTests
                 TypeOfCard = CardType.Three
             };
 
-            Card _OrangeNine = new Card()
+            ICard _OrangeNine = new Card()
             {
                 CardID = 1001,
                 CardScore = 9,
@@ -119,19 +122,50 @@ namespace UnoDosTest.PlayersTests
             __Player.Cards.Add(_OrangeThree);
             __Player.Cards.Add(_OrangeNine);
 
-            __Deck = __Player.PlayCard(_OrangeThree, __Deck.PlayedCards.Last(), __Deck);
+            __Deck = __Player.PlayCard(_OrangeThree, __Deck);
 
-            AssertCardIsNotPlayed(1, string.Format(EXPECTED_VALUE_ERROR, 3), 12);
+            AssertCardIsNotPlayed(1, string.Format(EXPECTED_VALUE_ERROR, 3), 12, 1);
 
-            __Deck = __Player.PlayCard(_OrangeNine, __Deck.PlayedCards.Last(), __Deck);
+            __Deck = __Player.PlayCard(_OrangeNine, __Deck);
 
-            AssertCardIsNotPlayed(2, string.Format(EXPECTED_VALUE_ERROR, 9), 12);
+            AssertCardIsNotPlayed(2, string.Format(EXPECTED_VALUE_ERROR, 9), 12, 1);
+        }
+
+        [TestMethod]
+        public void Player_PlayCard_ShouldReturnErrorWhenInvalidColour()
+        {
+            ICard _OrangeThree = new Card()
+            {
+                CardID = 1000,
+                CardScore = 3,
+                Colour = CardColour.Purple,
+                TypeOfCard = CardType.LoseTwo
+            };
+
+            ICard _OrangeNine = new Card()
+            {
+                CardID = 1001,
+                CardScore = 9,
+                Colour = CardColour.Pink,
+                TypeOfCard = CardType.SwapDeck
+            };
+
+            __Player.Cards.Add(_OrangeThree);
+            __Player.Cards.Add(_OrangeNine);
+
+            __Deck = __Player.PlayCard(_OrangeThree, __Deck);
+
+            AssertCardIsNotPlayed(1, string.Format(EXPECTED_COLOUR_ERROR, CardColour.Purple), 12, 1);
+
+            __Deck = __Player.PlayCard(_OrangeNine, __Deck);
+
+            AssertCardIsNotPlayed(2, string.Format(EXPECTED_COLOUR_ERROR, CardColour.Pink), 12, 1);
         }
 
         [TestMethod]
         public void Player_PlayCard_ShouldReturnPlayedCardWhenCardPlusOrMinusOneScore()
         {
-            Card _OrangeFour = new Card()
+            ICard _OrangeFour = new Card()
             {
                 CardID = 1000,
                 CardScore = 4,
@@ -139,7 +173,7 @@ namespace UnoDosTest.PlayersTests
                 TypeOfCard = CardType.Four
             };
 
-            Card _OrangeSix = new Card()
+            ICard _OrangeSix = new Card()
             {
                 CardID = 1001,
                 CardScore = 5,
@@ -150,11 +184,11 @@ namespace UnoDosTest.PlayersTests
             __Player.Cards.Add(_OrangeFour);
             __Player.Cards.Add(_OrangeSix);
 
-            __Deck = __Player.PlayCard(_OrangeFour, __Deck.PlayedCards.Last(), __Deck);
+            __Deck = __Player.PlayCard(_OrangeFour, __Deck);
 
             AssertCardIsPlayed(_OrangeFour, __Deck.PlayedCards.Last(), 2);
 
-            __Deck = __Player.PlayCard(_OrangeSix, __Deck.PlayedCards.Last(), __Deck);
+            __Deck = __Player.PlayCard(_OrangeSix, __Deck);
 
             AssertCardIsPlayed(_OrangeSix, __Deck.PlayedCards.Last(), 3);
             Assert.AreEqual(INITIAL_DRAW_COUNT, __Player.Cards.Count);
@@ -163,7 +197,7 @@ namespace UnoDosTest.PlayersTests
         [TestMethod]
         public void Player_PlayCard_ShouldReturnPlayedCardWhenSpecialCard()
         {
-            Card _SwitchCard = new Card()
+            ICard _SwitchCard = new Card()
             {
                 CardID = 1000,
                 CardScore = 20,
@@ -171,7 +205,7 @@ namespace UnoDosTest.PlayersTests
                 TypeOfCard = CardType.Reset
             };
 
-            Card _SwapDeckCard = new Card()
+            ICard _SwapDeckCard = new Card()
             {
                 CardID = 1001,
                 CardScore = 20,
@@ -179,7 +213,7 @@ namespace UnoDosTest.PlayersTests
                 TypeOfCard = CardType.SwapDeck
             };
 
-            Card _LoseTwoCard = new Card()
+            ICard _LoseTwoCard = new Card()
             {
                 CardID = 1002,
                 CardScore = 20,
@@ -190,16 +224,16 @@ namespace UnoDosTest.PlayersTests
             __Player.Cards.Add(_SwitchCard);
             __Player.Cards.Add(_SwapDeckCard);
 
-            __Deck = __Player.PlayCard(_SwitchCard, __Deck.PlayedCards.Last(), __Deck);
+            __Deck = __Player.PlayCard(_SwitchCard, __Deck);
 
 
             AssertCardIsPlayed(_SwitchCard, __Deck.PlayedCards.Last(), 2);
 
-            __Deck = __Player.PlayCard(_SwapDeckCard, __Deck.PlayedCards.Last(), __Deck);
+            __Deck = __Player.PlayCard(_SwapDeckCard, __Deck);
 
             AssertCardIsPlayed(_SwapDeckCard, __Deck.PlayedCards.Last(), 3);
 
-            __Deck = __Player.PlayCard(_LoseTwoCard, __Deck.PlayedCards.Last(), __Deck);
+            __Deck = __Player.PlayCard(_LoseTwoCard, __Deck);
 
             AssertCardIsPlayed(_LoseTwoCard, __Deck.PlayedCards.Last(), 4);
             Assert.AreEqual(INITIAL_DRAW_COUNT, __Player.Cards.Count);
@@ -208,7 +242,7 @@ namespace UnoDosTest.PlayersTests
         [TestMethod]
         public void Player_PlayCard_ShouldReturnPlayedCardWhenWildcard()
         {
-            Card _Wildcard = new Card()
+            ICard _Wildcard = new Card()
             {
                 CardID = 1000,
                 CardScore = 50,
@@ -218,10 +252,70 @@ namespace UnoDosTest.PlayersTests
 
             __Player.Cards.Add(_Wildcard);
 
-            __Deck = __Player.PlayCard(_Wildcard, __Deck.PlayedCards.Last(), __Deck);
+            __Deck = __Player.PlayCard(_Wildcard, __Deck);
 
             AssertCardIsPlayed(_Wildcard, __Deck.PlayedCards.Last(), 2);
             Assert.AreEqual(INITIAL_DRAW_COUNT, __Player.Cards.Count);
+        }
+
+        [TestMethod]
+        public void Player_LoseTwo_ShouldRemoveAllCardsFromPlayerHand()
+        {
+            int _OriginalDeckSize = __Deck.DeckOfCards.Count;
+
+            List<ICard> _CardsToLose = new List<ICard>
+            {
+                __Player.Cards[0],
+            };
+            __Player.Cards = new List<ICard>()
+            {
+                _CardsToLose[0]
+            };
+
+            __Deck = __Player.LoseTwoCards(_CardsToLose, __Deck);
+
+            Assert.AreEqual(0, __Player.Cards.Count);
+
+            Assert.AreEqual(_OriginalDeckSize + _CardsToLose.Count, __Deck.DeckOfCards.Count);
+            Assert.AreEqual(__Deck.DeckOfCards.Last(), _CardsToLose[0]);
+        }
+
+        [TestMethod]
+        public void Player_LoseTwo_ShouldRemoveTwoCardsFromPlayerHand()
+        {
+            int _OriginalDeckSize = __Deck.DeckOfCards.Count;
+
+            List<ICard> _CardsToLose = new List<ICard>
+            {
+                __Player.Cards[0],
+                __Player.Cards[1],
+            };
+
+            __Deck = __Player.LoseTwoCards(_CardsToLose, __Deck);
+
+            Assert.AreEqual(INITIAL_DRAW_COUNT - _CardsToLose.Count, __Player.Cards.Count);
+            Assert.AreNotEqual(_CardsToLose[0], __Player.Cards[0]);
+            Assert.AreNotEqual(_CardsToLose[1], __Player.Cards[1]);
+
+            Assert.AreEqual(_OriginalDeckSize + _CardsToLose.Count, __Deck.DeckOfCards.Count);
+            Assert.AreEqual(__Deck.DeckOfCards[__Deck.DeckOfCards.Count - 2], _CardsToLose[0]);
+            Assert.AreEqual(__Deck.DeckOfCards.Last(), _CardsToLose[1]);
+        }
+
+        [TestMethod]
+        public void Player_SwapCards_ShouldReplaceExistingHandWithNewHand()
+        {
+            ICPU _CPU = new CPU();
+            _CPU.Cards = __Deck.DrawCards(9);
+
+            KeyValuePair<List<ICard>, List<ICard>> _UnswappedCards = new KeyValuePair<List<ICard>, List<ICard>>(__Player.Cards, _CPU.Cards);
+
+            KeyValuePair<List<ICard>, List<ICard>> _SwappedCards = __Player.SwapCards(_UnswappedCards);
+
+            Assert.AreNotEqual(_UnswappedCards.Key.Count, _SwappedCards.Key.Count);
+            Assert.AreNotEqual(_UnswappedCards.Key[0], _SwappedCards.Key[0]);
+            Assert.AreEqual(_UnswappedCards.Value.Count, _SwappedCards.Key.Count);
+            Assert.AreEqual(_UnswappedCards.Value[0], _SwappedCards.Key[0]);
         }
     }
 }

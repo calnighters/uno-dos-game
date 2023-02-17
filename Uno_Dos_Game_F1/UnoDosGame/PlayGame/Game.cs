@@ -1,7 +1,10 @@
-﻿using UnoDos.Cards.Entities;
+﻿using System.Reflection;
+using UnoDos.Cards.Entities;
 using UnoDos.Cards.Interfaces;
 using UnoDos.Decks.Entities;
+using UnoDos.Decks.Interfaces;
 using UnoDos.Players.Entities;
+using UnoDos.Players.Interfaces;
 
 namespace UnoDos.PlayGame
 {
@@ -12,9 +15,9 @@ namespace UnoDos.PlayGame
         private const int INITIAL_DRAW_COUNT = 10;
         private const int PLAY_CARD_OPTION = 2;
 
-        private CPU __CPU;
-        private Deck __Deck;
-        private Player __Player;
+        private ICPU __CPU;
+        private IDeck __Deck;
+        private IPlayer __Player;
 
         private void CPUTurn()
         {
@@ -34,7 +37,7 @@ namespace UnoDos.PlayGame
 
                 if (CPU.IsSwapDeckPlayed)
                 {
-                    KeyValuePair<List<ICard>, List<ICard>> _SwappedCards = CPU.SwapCards(CPU.Cards, Player.Cards);
+                    KeyValuePair<List<ICard>, List<ICard>> _SwappedCards = CPU.SwapCards(new KeyValuePair<List<ICard>, List<ICard>>(CPU.Cards, Player.Cards));
                     CPU.Cards = _SwappedCards.Key;
                     Player.Cards = _SwappedCards.Value;
                 }
@@ -111,7 +114,7 @@ namespace UnoDos.PlayGame
 
             if (Player.IsSwapDeckPlayed)
             {
-                KeyValuePair<List<ICard>, List<ICard>> _SwappedCards = Player.SwapCards(Player.Cards, CPU.Cards);
+                KeyValuePair<List<ICard>, List<ICard>> _SwappedCards = Player.SwapCards(new KeyValuePair<List<ICard>, List<ICard>>(Player.Cards, CPU.Cards));
                 Player.Cards = _SwappedCards.Key;
                 CPU.Cards = _SwappedCards.Value;
             }
@@ -290,8 +293,8 @@ namespace UnoDos.PlayGame
         }
 
 
-        private CPU CPU => __CPU = __CPU ?? new CPU();
-        private Deck Deck => __Deck = __Deck ?? new Deck();
-        private Player Player => __Player = __Player ?? new Player();
+        private ICPU CPU => __CPU = __CPU ?? new CPU();
+        private IDeck Deck => __Deck = __Deck ?? new Deck();
+        private IPlayer Player => __Player = __Player ?? new Player();
     }
 }

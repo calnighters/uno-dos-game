@@ -100,21 +100,16 @@ B:\Team Project 2\TeamProject\UnoDosTest\bin\Debug\net6.0\CoverletSourceRootsMap
 B:\Team Project 2\TeamProject\UnoDosTest\bin\Debug\net6.0\UnoDos.dll
 B:\Team Project 2\TeamProject\UnoDosTest\bin\Debug\net6.0\UnoDos.pdb
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\CoverletSourceRootsMapping
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.csproj.AssemblyReference.cache
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.AssemblyInfoInputs.cache
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.AssemblyInfo.cs
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.csproj.CoreCompileInputs.cache
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.dll
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\refint\UnoDosTest.dll
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.pdb
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\testhost.exe
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\testhost.dll
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.deps.json
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.runtimeconfig.json
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.exe
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\testhost.exe
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\Microsoft.TestPlatform.AdapterUtilities.dll
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDosTest.deps.json
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDosTest.runtimeconfig.json
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDosTest.dll
@@ -202,9 +197,14 @@ C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\b
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.dll
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.dll
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.pdb
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.csproj.AssemblyReference.cache
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.AssemblyInfoInputs.cache
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.AssemblyInfo.cs
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.csproj.CoreCompileInputs.cache
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.csproj.CopyComplete
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.dll
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\refint\UnoDosTest.dll
+C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.pdb
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\UnoDosTest.genruntimeconfig.cache
 C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\obj\Debug\net6.0\ref\UnoDosTest.dll
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.deps.json
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.runtimeconfig.json
-C:\Users\Josh\Source\Repos\calnighters\uno-dos-game\Uno_Dos_Game_F1\UnoDosTest\bin\Debug\net6.0\UnoDos.exe

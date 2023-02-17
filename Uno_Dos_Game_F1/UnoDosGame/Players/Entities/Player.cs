@@ -1,7 +1,7 @@
 ﻿using UnoDos.Cards.Entities;
 using UnoDos.Cards.Enums;
 using UnoDos.Cards.Interfaces;
-using UnoDos.Decks.Entities;
+using UnoDos.Decks.Interfaces;
 using UnoDos.Players.Interfaces;
 
 namespace UnoDos.Players.Entities
@@ -41,8 +41,8 @@ namespace UnoDos.Players.Entities
                         Errors.Add(string.Format(INVALID_COLOUR_ERROR, playedCard.Colour.ToString(), shownCard.Colour.ToString()));
                         return false;
                     }
-                    if (playedCard.CardScore - shownCard.CardScore != -1 
-                        && playedCard.CardScore - shownCard.CardScore != 1 
+                    if (playedCard.CardScore - shownCard.CardScore != -1
+                        && playedCard.CardScore - shownCard.CardScore != 1
                         && !_IsShownCardSpecial)
                     {
                         Errors.Add(string.Format(INVALID_NUMBER_ERROR, playedCard.CardScore.ToString(), shownCard.CardScore.ToString()));
@@ -63,13 +63,13 @@ namespace UnoDos.Players.Entities
             return false;
         }
 
-        public Deck DrawCard(Deck currentDeck)
+        public IDeck DrawCard(IDeck currentDeck)
         {
             Cards.Add(currentDeck.DrawCards(DRAW_CARD_ONE).SingleOrDefault());
             return currentDeck;
         }
 
-        public Deck LoseTwoCards(List<ICard> cardsToRemove, Deck currentDeck)
+        public IDeck LoseTwoCards(List<ICard> cardsToRemove, IDeck currentDeck)
         {
             Cards.RemoveAll(card => cardsToRemove.Contains(card));
             currentDeck.DeckOfCards.AddRange(cardsToRemove);
@@ -77,7 +77,7 @@ namespace UnoDos.Players.Entities
             return currentDeck;
         }
 
-        public Deck PlayCard(ICard playedCard, Deck currentDeck)
+        public IDeck PlayCard(ICard playedCard, IDeck currentDeck)
         {
             ICard _ShownCard = currentDeck.PlayedCards.Last();
 
@@ -99,7 +99,7 @@ namespace UnoDos.Players.Entities
                         break;
                 }
 
-                if(playedCard.TypeOfCard == CardType.SeeThrough)
+                if (playedCard.TypeOfCard == CardType.SeeThrough)
                 {
                     playedCard.Colour = _ShownCard.Colour;
                 }
@@ -109,10 +109,10 @@ namespace UnoDos.Players.Entities
             return currentDeck;
         }
 
-        public KeyValuePair<List<ICard>, List<ICard>> SwapCards(List<ICard> cardsToGive, List<ICard> cardsToReceive)
+        public KeyValuePair<List<ICard>, List<ICard>> SwapCards(KeyValuePair<List<ICard>, List<ICard>> unswappedCards)
         {
             Dictionary<List<ICard>, List<ICard>> _SwappedCards = new Dictionary<List<ICard>, List<ICard>>();
-            _SwappedCards.Add(cardsToReceive, cardsToGive);
+            _SwappedCards.Add(unswappedCards.Value, unswappedCards.Key);
             IsSwapDeckPlayed = false;
             return _SwappedCards.First();
         }

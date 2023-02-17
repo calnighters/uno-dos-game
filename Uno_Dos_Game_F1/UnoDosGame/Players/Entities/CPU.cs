@@ -1,15 +1,16 @@
 using UnoDos.Cards.Entities;
 using UnoDos.Cards.Enums;
 using UnoDos.Cards.Interfaces;
-using UnoDos.Decks.Entities;
- 
+using UnoDos.Decks.Interfaces;
+using UnoDos.Players.Interfaces;
+
 namespace UnoDos.Players.Entities
 {
-    public class CPU : Player
+    public class CPU : Player, ICPU
     {
-        public Deck LoseTwoCards(Deck currentDeck)
+        public IDeck LoseTwoCards(IDeck currentDeck)
         {
-            if(Cards.Count < 2)
+            if (Cards.Count < 2)
             {
                 Cards = new List<ICard>();
             }
@@ -29,7 +30,7 @@ namespace UnoDos.Players.Entities
         }
 
         //Method for CPU to play a card after the list of playable cards has been generated
-        public Deck PlayCardCPU(Deck currentDeck, ICard shownCard)
+        public IDeck PlayCardCPU(IDeck currentDeck, ICard shownCard)
         {
             PossibleCards(shownCard);
 

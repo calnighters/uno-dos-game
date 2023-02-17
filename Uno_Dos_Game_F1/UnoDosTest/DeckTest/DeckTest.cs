@@ -1,12 +1,14 @@
 using UnoDos.Cards.Entities;
+using UnoDos.Cards.Interfaces;
 using UnoDos.Decks.Entities;
+using UnoDos.Decks.Interfaces;
 
 namespace UnoDosTest.DeckTest
 {
     [TestClass]
     public class DeckTest
     {
-        private Deck __Deck;
+        private IDeck __Deck;
 
         [TestInitialize]
         public void Initialize()
@@ -41,7 +43,7 @@ namespace UnoDosTest.DeckTest
         {
             CreateDeck();
             int count = 7;
-            List<Card> drawnCards = __Deck.DrawCards(count);
+            List<ICard> drawnCards = __Deck.DrawCards(count);
 
             Assert.AreEqual(drawnCards.Count, count);
             Assert.AreEqual(105 - count, __Deck.DeckOfCards.Count);
@@ -51,11 +53,11 @@ namespace UnoDosTest.DeckTest
         public void ShuffleTest()
         {
             CreateDeck();
-            List<Card> cardsBeforeShuffle = __Deck.DeckOfCards.ToList();
+            List<ICard> cardsBeforeShuffle = __Deck.DeckOfCards.ToList();
 
             __Deck.Shuffle();
 
-            List<Card> cardsAfterShuffle = __Deck.DeckOfCards.ToList();
+            List<ICard> cardsAfterShuffle = __Deck.DeckOfCards.ToList();
 
             // Both decks should not be equal in order to be completely shuffled
             Assert.AreNotEqual(cardsBeforeShuffle, cardsAfterShuffle);

@@ -6496,7 +6496,7 @@
       "projectName": "UnoDosTest",
       "projectPath": "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\UnoDosTest\\UnoDosTest.csproj",
       "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Josh\\Source\\Repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\UnoDosTest\\obj\\",
+      "outputPath": "C:\\Users\\Josh\\source\\repos\\calnighters\\uno-dos-game\\Uno_Dos_Game_F1\\UnoDosTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
