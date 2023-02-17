@@ -1,5 +1,6 @@
 ﻿using UnoDos.Cards.Interfaces;
 using UnoDos.Cards.Enums;
+using UnoDos.Extensions;
 
 namespace UnoDos.Cards.Entities
 {
@@ -26,7 +27,7 @@ namespace UnoDos.Cards.Entities
         // add an override toString method
         public string ToString()
         {
-            return Colour + " " + TypeOfCard;
+            return Colour.GetDescriptionFromEnum() + " " + TypeOfCard.GetDescriptionFromEnum();
         }
     }
 }

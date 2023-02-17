@@ -1,13 +1,18 @@
-﻿namespace UnoDos.Cards.Enums
+﻿using System.ComponentModel;
+
+namespace UnoDos.Cards.Enums
 {
     public enum CardColour
     {
-        //Name of colors
-        //getters and setters for the colors
+        [Description("Pink")]
         Pink,
+        [Description("Green")]
         Green,
+        [Description("Orange")]
         Orange,
+        [Description("Purple")]
         Purple,
+        [Description("See Through")]
         SeeThrough
     }
 }

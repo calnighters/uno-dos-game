@@ -64,6 +64,16 @@ namespace UnoDos.Decks.Entities
         }
 
         // Draw Card Method
+        public ICard DrawCard()
+        {
+            Reshuffle();
+            ICard _DrawnCard = DeckOfCards.Take(DRAW_FACE_CARD_AMOUNT).SingleOrDefault();
+
+            //Remove the drawn cards from the draw pile
+            DeckOfCards.Remove(_DrawnCard);
+            return _DrawnCard;
+        }
+       
         public List<ICard> DrawCards(int count)
         {
             if (count <= 0)
@@ -95,17 +105,7 @@ namespace UnoDos.Decks.Entities
             return _DrawnCard;
         }
 
-        public ICard DrawCard()
-        {
-            Reshuffle();
-            ICard _DrawnCard = DeckOfCards.Take(DRAW_FACE_CARD_AMOUNT).SingleOrDefault();
-
-            //Remove the drawn cards from the draw pile
-            DeckOfCards.Remove(_DrawnCard);
-            return _DrawnCard;
-        }
-
-        public void Reshuffle()
+        private void Reshuffle()
         {
             if (DeckOfCards.Count < 1)
             {
@@ -133,8 +133,9 @@ namespace UnoDos.Decks.Entities
             }
         }
 
-        public ICard CardCreator => __CardCreator = __CardCreator ?? new Card();
+        private ICard CardCreator => __CardCreator = __CardCreator ?? new Card();
         public List<ICard> DeckOfCards => __DeckOfCards = __DeckOfCards ?? new();
+        public ICard LastCardPlayed => PlayedCards.Last();
         public List<ICard> PlayedCards => __PlayedCards = __PlayedCards ?? new();
     }
 }

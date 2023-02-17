@@ -1,5 +1,3 @@
-using UnoDos.Cards.Entities;
-using UnoDos.Cards.Enums;
 using UnoDos.Cards.Interfaces;
 using UnoDos.Decks.Interfaces;
 using UnoDos.Players.Interfaces;
@@ -12,6 +10,7 @@ namespace UnoDos.Players.Entities
         {
             if (Cards.Count < 2)
             {
+                currentDeck.DeckOfCards.Add(Cards[0]);
                 Cards = new List<ICard>();
             }
             else
@@ -30,9 +29,9 @@ namespace UnoDos.Players.Entities
         }
 
         //Method for CPU to play a card after the list of playable cards has been generated
-        public IDeck PlayCardCPU(IDeck currentDeck, ICard shownCard)
+        public IDeck PlayCardCPU(IDeck currentDeck)
         {
-            PossibleCards(shownCard);
+            PossibleCards(currentDeck.LastCardPlayed);
 
             if (PlayableCards.Count > 0)
             {

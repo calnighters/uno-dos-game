@@ -38,29 +38,60 @@ namespace UnoDosTest.DeckTest
             __Deck.DrawCards(count);
         }
 
+
         [TestMethod]
         public void DrawCardsTest()
         {
             CreateDeck();
-            int count = 7;
-            List<ICard> drawnCards = __Deck.DrawCards(count);
+            int _Count = 7;
+            List<ICard> _DrawnCards = __Deck.DrawCards(_Count);
 
-            Assert.AreEqual(drawnCards.Count, count);
-            Assert.AreEqual(105 - count, __Deck.DeckOfCards.Count);
+            Assert.AreEqual(_DrawnCards.Count, _Count);
+            Assert.AreEqual(105 - _Count, __Deck.DeckOfCards.Count);
+        }
+
+        [TestMethod]
+        public void ReshuffleTest()
+        {
+            CreateDeck();
+            __Deck.PlayedCards.AddRange(__Deck.DrawCards(50));
+            __Deck.DrawCards(55);
+
+            __Deck.DrawCard();
+            Assert.AreEqual(48, __Deck.DeckOfCards.Count());
+        }
+
+        [TestMethod]
+        public void DrawCardTest()
+        {
+            CreateDeck();
+            __Deck.DrawCard();
+
+            Assert.AreEqual(105 - 1, __Deck.DeckOfCards.Count);
+        }
+
+        [TestMethod]
+        public void DrawInitialCardTest()
+        {
+            CreateDeck();
+            __Deck.DrawInitialCard();
+
+            Assert.AreEqual(105 - 1, __Deck.DeckOfCards.Count);
+            Assert.AreEqual(29, __Deck.DeckOfCards.Where(card => Card.SpecialCards.Contains(card.TypeOfCard)).Count());
         }
 
         [TestMethod]
         public void ShuffleTest()
         {
             CreateDeck();
-            List<ICard> cardsBeforeShuffle = __Deck.DeckOfCards.ToList();
+            List<ICard> _CardsBeforeShuffle = __Deck.DeckOfCards.ToList();
 
             __Deck.Shuffle();
 
-            List<ICard> cardsAfterShuffle = __Deck.DeckOfCards.ToList();
+            List<ICard> _CardsAfterShuffle = __Deck.DeckOfCards.ToList();
 
             // Both decks should not be equal in order to be completely shuffled
-            Assert.AreNotEqual(cardsBeforeShuffle, cardsAfterShuffle);
+            Assert.AreNotEqual(_CardsBeforeShuffle, _CardsAfterShuffle);
         }
     }
 }

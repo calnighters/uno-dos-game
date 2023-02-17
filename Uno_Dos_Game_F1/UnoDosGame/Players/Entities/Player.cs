@@ -79,7 +79,7 @@ namespace UnoDos.Players.Entities
 
         public IDeck PlayCard(ICard playedCard, IDeck currentDeck)
         {
-            ICard _ShownCard = currentDeck.PlayedCards.Last();
+            ICard _ShownCard = currentDeck.LastCardPlayed;
 
             if (CanPlayCard(playedCard, _ShownCard))
             {
@@ -111,10 +111,9 @@ namespace UnoDos.Players.Entities
 
         public KeyValuePair<List<ICard>, List<ICard>> SwapCards(KeyValuePair<List<ICard>, List<ICard>> unswappedCards)
         {
-            Dictionary<List<ICard>, List<ICard>> _SwappedCards = new Dictionary<List<ICard>, List<ICard>>();
-            _SwappedCards.Add(unswappedCards.Value, unswappedCards.Key);
+            KeyValuePair<List<ICard>, List<ICard>> _SwappedCards = new KeyValuePair<List<ICard>, List<ICard>>(unswappedCards.Value, unswappedCards.Key);
             IsSwapDeckPlayed = false;
-            return _SwappedCards.First();
+            return _SwappedCards;
         }
 
         public List<string> ViewCards()
