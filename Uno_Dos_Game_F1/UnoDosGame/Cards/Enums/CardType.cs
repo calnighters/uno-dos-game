@@ -12,9 +12,9 @@
         Seven,
         Eight,
         Nine,
-        Switch,
+        Reset,
         LoseTwo,
         SwapDeck,
-        WildCard
+        SeeThrough
     }
 }

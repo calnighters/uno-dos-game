@@ -8,6 +8,6 @@
         Green,
         Orange,
         Purple,
-        Wild
+        SeeThrough
     }
 }

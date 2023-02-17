@@ -46,7 +46,7 @@ namespace UnoDosTest.CPUTests
             Initialise();
             Assert.AreEqual(10, __CPU.Cards.Count);
 
-            __CPU.playCard(__CPU.playableCards);
+            __CPU.PlayCard(__Deck);
             Assert.AreEqual(9, __CPU.Cards.Count);
         }
     }

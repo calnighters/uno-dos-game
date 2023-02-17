@@ -82,7 +82,7 @@ namespace UnoDosTest.PlayersTests
                 CardID = 1001,
                 CardScore = 20,
                 Colour = CardColour.Purple,
-                TypeOfCard = CardType.Switch
+                TypeOfCard = CardType.Reset
             };
 
             __Player.Cards.Add(_PurpleFour);
@@ -168,7 +168,7 @@ namespace UnoDosTest.PlayersTests
                 CardID = 1000,
                 CardScore = 20,
                 Colour = CardColour.Orange,
-                TypeOfCard = CardType.Switch
+                TypeOfCard = CardType.Reset
             };
 
             Card _SwapDeckCard = new Card()
@@ -212,8 +212,8 @@ namespace UnoDosTest.PlayersTests
             {
                 CardID = 1000,
                 CardScore = 50,
-                Colour = CardColour.Wild,
-                TypeOfCard = CardType.WildCard
+                Colour = CardColour.SeeThrough,
+                TypeOfCard = CardType.SeeThrough
             };
 
             __Player.Cards.Add(_Wildcard);

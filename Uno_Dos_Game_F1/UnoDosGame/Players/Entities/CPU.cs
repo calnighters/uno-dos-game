@@ -1,42 +1,67 @@
 using UnoDos.Cards.Entities;
 using UnoDos.Cards.Enums;
+using UnoDos.Cards.Interfaces;
 using UnoDos.Decks.Entities;
  
 namespace UnoDos.Players.Entities
 {
     public class CPU : Player
     {
-        //Method to generate a list of the cards the CPU could play
-        private List<Card> PossibleCards(Card shownCard)
+        public Deck LoseTwoCards(Deck currentDeck)
         {
-            List<Card> __PlayableCards;
-            //For each card the CPU has
-            foreach (Card _Card in Cards)
+            for (int i = 0; i < 2; i++)
             {
-                //Calls the parent Player().CanPLayCard() method
-                if (CPU.CanPlayCard())
-                {
-                    //And adds card to list if playable
-                    __PlayableCards.add(__Card);
-                }
+                Random _Random = new Random();
+                int _Index = _Random.Next(Cards.Count());
+                ICard _CardToLose = Cards[_Index];
+                Cards.Remove(_CardToLose);
+                currentDeck.DeckOfCards.Add(_CardToLose);
             }
-            return __PlayableCards;
-        }
-
-        //Method for CPU to play a card after the list of playable cards has been generated
-        public override Deck PlayCard(List<Card> playableCards, Card shownCard, Deck currentDeck)
-        {
-            //Select a random playable card
-            Random rnd = new Random();
-            int index = rnd.Next(playableCards.Length);
-            Card playedCard = playableCards.get(index);
-            
-            //Remove card from hand and play it on deck
-            Cards.Remove(playedCard);
-            currentDeck.PlayedCards.Add(playedCard);
-            
             return currentDeck;
         }
 
+        //Method for CPU to play a card after the list of playable cards has been generated
+        public Deck PlayCardCPU(Deck currentDeck, ICard shownCard)
+        {
+            PossibleCards(shownCard);
+
+            if (PlayableCards.Count > 0)
+            {
+                //Select a random playable card
+                Random _Random = new Random();
+                int _Index = _Random.Next(PlayableCards.Count());
+                ICard _PlayedCard = PlayableCards[_Index];
+                HasCPUPlayedCard = true;
+                //Remove card from hand and play it on deck
+                return PlayCard(_PlayedCard, currentDeck);
+            }
+            else
+            {
+                DrawCard(currentDeck);
+                HasCPUPlayedCard = false;
+            }
+
+            return currentDeck;
+        }
+
+        //Method to generate a list of the cards the CPU could play
+        private List<ICard> PossibleCards(ICard shownCard)
+        {
+            PlayableCards = new List<ICard>();
+            //For each card the CPU has
+            foreach (ICard _Card in Cards)
+            {
+                //Calls the parent Player().CanPLayCard() method
+                if (CanPlayCard(_Card, shownCard))
+                {
+                    //And adds card to list if playable
+                    PlayableCards.Add(_Card);
+                }
+            }
+            return PlayableCards;
+        }
+
+        public bool HasCPUPlayedCard { get; private set; }
+        public List<ICard> PlayableCards { get; private set; }
     }
 }
