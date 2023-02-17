@@ -41,8 +41,9 @@ namespace UnoDos.PlayGame
             {
                 __Deck = CPU.PlayCardCPU(Deck);
                 DisplayHasCPUPlayedCardMessage();
-                while (CPU.IsResetCardPlayed)
+                while (CPU.IsResetCardPlayed && CPU.Cards.Count > 0)
                 {
+                    __Deck = CPU.PlayCardCPU(Deck);
                     CPU.IsResetCardPlayed = false;
                     DisplayHasCPUPlayedCardMessage();
                 }
@@ -51,7 +52,7 @@ namespace UnoDos.PlayGame
                     __Deck = CPU.LoseTwoCards(Deck);
                 }
 
-                if (CPU.IsSwapDeckPlayed)
+                if (CPU.IsSwapDeckPlayed && CPU.Cards.Count > 0)
                 {
                     KeyValuePair<List<ICard>, List<ICard>> _SwappedCards = CPU.SwapCards(new KeyValuePair<List<ICard>, List<ICard>>(CPU.Cards, Player.Cards));
                     CPU.Cards = _SwappedCards.Key;
@@ -101,13 +102,16 @@ namespace UnoDos.PlayGame
             Console.WriteLine("\n7) The Lose Two card allows the player to select any two cards they would like to get rid of and then places them two cards to the bottom of the card deck");
             Console.WriteLine("\n8) The Swap Deck card swaps the player's cards with the CPU's cards");
             Console.WriteLine("\n9) Compete to get rid of all your cards before the CPU does to win!");
-            Console.WriteLine("\n\nPress any key to return to the main menu...");
+            Console.WriteLine("\n\nPress enter to return to the main menu...");
             Console.ReadLine();
             Console.Clear();
         }
 
         private void InitialiseGame()
         {
+            __Deck = new Deck();
+            __Player = new Player();
+            __CPU = new CPU();
             Deck.CreateDeck();
             Deck.Shuffle();
             Player.Cards = Deck.DrawCards(INITIAL_DRAW_COUNT);
@@ -154,7 +158,7 @@ namespace UnoDos.PlayGame
                         break;
                     case 3:
                         Console.Clear();
-                        Console.WriteLine("Thanks for playing! Press any key to close the window...");
+                        Console.WriteLine("Thanks for playing! Press enter to close the window...");
                         Console.ReadLine();
                         break;
                     default:
@@ -219,7 +223,7 @@ namespace UnoDos.PlayGame
         private void PlayerTurn()
         {
             PlayerOptions();
-            while (Player.IsResetCardPlayed)
+            while (Player.IsResetCardPlayed && Player.Cards.Count > 0)
             {
                 Player.IsResetCardPlayed = false;
                 Console.WriteLine("\nYou played a reset card! Take another turn!");
@@ -230,7 +234,7 @@ namespace UnoDos.PlayGame
                 PlayerSelectTwoCardsToLose();
             }
 
-            if (Player.IsSwapDeckPlayed)
+            if (Player.IsSwapDeckPlayed  && Player.Cards.Count > 0)
             {
                 KeyValuePair<List<ICard>, List<ICard>> _SwappedCards = Player.SwapCards(new KeyValuePair<List<ICard>, List<ICard>>(Player.Cards, CPU.Cards));
                 Player.Cards = _SwappedCards.Key;
@@ -259,8 +263,16 @@ namespace UnoDos.PlayGame
                     int _SelectedCardPosition = CheckCardSelectedIsValid(Console.ReadLine());
                     if (_SelectedCardPosition > 0)
                     {
-                        _CardsToRemove.Add(Player.Cards[_SelectedCardPosition - 1]);
-                        _CardsSelected++;
+                        ICard _CardToRemove = Player.Cards[_SelectedCardPosition - 1];
+                        if (_CardsToRemove.Contains(_CardToRemove))
+                        {
+                            Console.WriteLine("\nYou have already selected this card! Please select another!");
+                        }
+                        else
+                        {
+                            _CardsToRemove.Add(Player.Cards[_SelectedCardPosition - 1]);
+                            _CardsSelected++;
+                        }
                     }
                 }
             }
