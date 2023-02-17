@@ -98,12 +98,13 @@ namespace UnoDos.PlayGame
         private void PlayerTurn()
         {
             PlayerOptions();
-
+            Console.Clear();
             while (Player.IsResetCardPlayed)
             {
                 Player.IsResetCardPlayed = false;
                 Console.WriteLine("\nYou played a reset card! Take another turn!");
                 PlayerOptions();
+                Console.Clear();
             }
             if (Player.IsLoseTwoCardPlayed)
             {
@@ -125,9 +126,12 @@ namespace UnoDos.PlayGame
             Player.PlayerName = Console.ReadLine();
 
             InitialiseGame();
+            Console.Clear();
             while (Player.Cards.Count > 0 && CPU.Cards.Count > 0)
             {
                 PlayerTurn();
+                Console.Clear();
+
                 CPUTurn();
             }
 
